@@ -8,7 +8,7 @@ namespace System.Collections.Observable
 {
     public static class ObservableCollectionExtensions
     {
-        public static IReadOnlyObservableCollection<TResult> Cast<TResult>(this INotifyCollectionChanged collection)
+        public static IReadOnlyObservableCollection<TResult> CastAsObservableCollection<TResult>(this INotifyCollectionChanged collection)
         {
             if (collection is IReadOnlyObservableCollection<TResult> readOnlyObservableCollection)
             {

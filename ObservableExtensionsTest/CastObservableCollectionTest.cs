@@ -31,7 +31,7 @@ namespace ObservableExtensionsTest
         {
             var blist = new System.Collections.ObjectModel.ObservableCollection<B>();
 
-            var alist = blist.UseObservableKeepingLinq().Cast<A>();
+            var alist = blist.UseObservableKeepingLinq().CastAsObservableCollection<A>();
 
             var callCount = 0;
 
