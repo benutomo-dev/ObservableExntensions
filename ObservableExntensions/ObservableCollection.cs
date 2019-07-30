@@ -16,6 +16,8 @@ namespace System.Collections.Observable
         internal ObservableCollection(System.Collections.ObjectModel.ObservableCollection<T> collection)
         {
             this.collection = collection ?? throw new ArgumentNullException(nameof(collection));
+
+            collection.CollectionChanged += (src, args) => CollectionChanged?.Invoke(this, args);
         }
 
         public T this[int index]
