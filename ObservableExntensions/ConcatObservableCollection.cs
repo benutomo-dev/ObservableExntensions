@@ -8,7 +8,7 @@ namespace System.Collections.Observable
 {
     class ConcatObservableCollection<T> : IReadOnlyObservableCollection<T>
     {
-        IList<T>[] collections;
+        IReadOnlyList<T>[] collections;
 
         public ConcatObservableCollection(IReadOnlyObservableCollection<T>[] collections)
         {
@@ -17,7 +17,7 @@ namespace System.Collections.Observable
                 throw new ArgumentNullException(nameof(collections));
             }
 
-            this.collections = collections.Cast<IList<T>>().ToArray();
+            this.collections = collections.Cast<IReadOnlyList<T>>().ToArray();
 
             for (int i = 0; i < collections.Length; i++)
             {
@@ -89,10 +89,16 @@ namespace System.Collections.Observable
 
             foreach (var collection in collections)
             {
-                var index = collection.IndexOf(item);
-                if (index >= 0)
+                var currentIndex = 0;
+
+                foreach (var current in collection)
                 {
-                    return indexOffset + index;
+                    if (EqualityComparer<T>.Default.Equals(item, current))
+                    {
+                        return indexOffset + currentIndex;
+                    }
+
+                    currentIndex++;
                 }
 
                 indexOffset += collection.Count;
