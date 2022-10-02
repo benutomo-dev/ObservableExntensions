@@ -13,16 +13,24 @@ namespace ObservableExtensionsTest
     {
         class A
         {
-            public string aValue;
+            public string? aValue = null;
         }
 
         class B : A
         {
-            public string bValue;
+            public string? bValue;
 
             public override bool Equals(object obj)
             {
                 return obj is B b && b.aValue == aValue && b.bValue == bValue;
+            }
+
+            public override int GetHashCode()
+            {
+                int hashCode = -545197961;
+                hashCode = hashCode * -1521134295 + EqualityComparer<string?>.Default.GetHashCode(aValue);
+                hashCode = hashCode * -1521134295 + EqualityComparer<string?>.Default.GetHashCode(bValue);
+                return hashCode;
             }
         }
 

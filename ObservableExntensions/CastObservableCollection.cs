@@ -13,7 +13,7 @@ namespace System.Collections.Observable
 
         public CastToType this[int index] => (CastToType)collection[index];
 
-        public event NotifyCollectionChangedEventHandler CollectionChanged;
+        public event NotifyCollectionChangedEventHandler? CollectionChanged;
 
         public CastObservableCollection(INotifyCollectionChanged collection)
         {
@@ -53,7 +53,7 @@ namespace System.Collections.Observable
 
         bool IList.IsReadOnly => true;
 
-        object IList.this[int index] { get => this[index]; set => throw new NotSupportedException(); }
+        object IList.this[int index] { get => this[index]!; set => throw new NotSupportedException(); }
 
         int IList.Add(object value) => throw new NotSupportedException();
 
@@ -79,7 +79,7 @@ namespace System.Collections.Observable
 
         public CastToType this[int index] => (CastToType)collection[index];
 
-        public event NotifyCollectionChangedEventHandler CollectionChanged;
+        public event NotifyCollectionChangedEventHandler? CollectionChanged;
 
         public CastObservableCollection(INotifyCollectionChanged collection)
         {
@@ -120,7 +120,7 @@ namespace System.Collections.Observable
 
         bool IList.IsReadOnly => true;
 
-        object IList.this[int index] { get => this[index]; set => throw new NotSupportedException(); }
+        object IList.this[int index] { get => this[index]!; set => throw new NotSupportedException(); }
 
         int IList.Add(object value) => throw new NotSupportedException();
 

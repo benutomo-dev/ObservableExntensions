@@ -14,7 +14,7 @@ namespace System.Collections.Observable
 
         public TResult this[int index] => collection[index];
 
-        public event NotifyCollectionChangedEventHandler CollectionChanged;
+        public event NotifyCollectionChangedEventHandler? CollectionChanged;
 
         Func<TSource, TResult> create;
 
@@ -35,9 +35,9 @@ namespace System.Collections.Observable
 
         private void Collection_CollectionChanged(object sender, NotifyCollectionChangedEventArgs args)
         {
-            List<TResult> transNewItems = null;
-            List<TResult> transOldItems = null;
-            NotifyCollectionChangedEventArgs transArgs = null;
+            List<TResult>? transNewItems = null;
+            List<TResult>? transOldItems = null;
+            NotifyCollectionChangedEventArgs? transArgs = null;
 
             switch (args.Action)
             {
@@ -109,7 +109,7 @@ namespace System.Collections.Observable
 
         bool IList.IsReadOnly => true;
 
-        object IList.this[int index] { get => this[index]; set => throw new NotSupportedException(); }
+        object IList.this[int index] { get => this[index]!; set => throw new NotSupportedException(); }
 
         int IList.Add(object value) => throw new NotSupportedException();
 

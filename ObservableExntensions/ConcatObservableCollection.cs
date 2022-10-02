@@ -77,7 +77,7 @@ namespace System.Collections.Observable
 
         public int Count => collections.Sum(collection => collection.Count);
 
-        public event NotifyCollectionChangedEventHandler CollectionChanged;
+        public event NotifyCollectionChangedEventHandler? CollectionChanged;
 
         public bool Contains(T item) => collections.Any(collection => collection.Contains(item));
 
@@ -133,7 +133,7 @@ namespace System.Collections.Observable
 
         bool IList.IsReadOnly => true;
 
-        object IList.this[int index] { get => this[index]; set => throw new NotSupportedException(); }
+        object IList.this[int index] { get => this[index]!; set => throw new NotSupportedException(); }
 
         int IList.Add(object value) => throw new NotSupportedException();
 
@@ -156,7 +156,7 @@ namespace System.Collections.Observable
             {
                 if (value is null || value is T)
                 {
-                    return Contains((T)value);
+                    return Contains((T)value!);
                 }
                 else
                 {
@@ -182,7 +182,7 @@ namespace System.Collections.Observable
             {
                 if (value is null || value is T)
                 {
-                    return IndexOf((T)value);
+                    return IndexOf((T)value!);
                 }
                 else
                 {

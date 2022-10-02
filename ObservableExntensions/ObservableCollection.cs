@@ -30,7 +30,7 @@ namespace System.Collections.Observable
 
         public bool IsReadOnly => false;
 
-        public event NotifyCollectionChangedEventHandler CollectionChanged;
+        public event NotifyCollectionChangedEventHandler? CollectionChanged;
 
         public void Add(T item) => collection.Add(item);
 
