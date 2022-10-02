@@ -1,11 +1,23 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29123.88
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObservableExntensions", "ObservableExntensions\ObservableExntensions.csproj", "{33C4CC64-1BD1-4D55-A9BC-9C091CFBEB94}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ObservableExntensions", "ObservableExntensions\ObservableExntensions.csproj", "{33C4CC64-1BD1-4D55-A9BC-9C091CFBEB94}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObservableExtensionsTest", "ObservableExtensionsTest\ObservableExtensionsTest.csproj", "{F2AB12BA-A564-4426-999B-BED16F240A52}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ソリューション項目", "ソリューション項目", "{EF42F1FD-C970-457E-9C55-A8E10B5CA792}"
+	ProjectSection(SolutionItems) = preProject
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		Directory.build.props = Directory.build.props
+		Directory.build.props.user = Directory.build.props.user
+		Directory.build.targets = Directory.build.targets
+		Directory.build.targets.user = Directory.build.targets.user
+		global.json = global.json
+		LICENSE = LICENSE
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
