@@ -5,4 +5,19 @@
     <RootNamespace>System.Collections.Observable</RootNamespace>
   </PropertyGroup>
 
+  <!-- NuGet -->
+  <PropertyGroup>
+    <PackageId>Benutomo.ObservableExntensions</PackageId>
+    <Description>The extensions of IObservableCollection.</Description>
+    <PackageVersion>1.0.0-alpha1</PackageVersion>
+    <Authors>benutomo</Authors>
+    <Copyright>© benutomo.</Copyright>
+    <PackageTags>observablecollection</PackageTags>
+    <PackageProjectUrl>https://github.com/benutomo-dev/ObservableExntensions</PackageProjectUrl>
+    <RepositoryUrl>$(PackageProjectUrl)</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+  </PropertyGroup>
+
 </Project>
