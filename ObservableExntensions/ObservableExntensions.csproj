@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net46;</TargetFrameworks>
     <RootNamespace>System.Collections.Observable</RootNamespace>
+    <LangVersion>8</LangVersion>
   </PropertyGroup>
 
 </Project>

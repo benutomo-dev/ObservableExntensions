@@ -5,7 +5,7 @@ using System.Text;
 
 namespace System.Collections.Observable
 {
-    public class ObservableCollection<T> : IObservableCollection<T>
+    public class ObservableCollection<T> : IObservableCollection<T>, IList
     {
         System.Collections.ObjectModel.ObservableCollection<T> collection;
 
@@ -46,15 +46,40 @@ namespace System.Collections.Observable
 
         public void Insert(int index, T item) => collection.Insert(index, item);
 
-        public void Move(int oldIndex, int newIndex)
-        {
-            throw new NotImplementedException();
-        }
+        public void Move(int oldIndex, int newIndex) => collection.Move(oldIndex, newIndex);
 
         public bool Remove(T item) => collection.Remove(item);
 
         public void RemoveAt(int index) => collection.RemoveAt(index);
 
         IEnumerator IEnumerable.GetEnumerator() => collection.GetEnumerator();
+
+
+
+        #region ICollection
+        bool ICollection.IsSynchronized => ((ICollection)collection).IsSynchronized;
+
+        object ICollection.SyncRoot => ((ICollection)collection).SyncRoot;
+
+        void ICollection.CopyTo(Array array, int index) => ((ICollection)collection).CopyTo(array, index);
+        #endregion
+
+        #region IList
+        bool IList.IsFixedSize => ((IList)collection).IsFixedSize;
+
+        bool IList.IsReadOnly => ((IList)collection).IsReadOnly;
+
+        object IList.this[int index] { get => ((IList)collection)[index]; set => ((IList)collection)[index] = value; }
+
+        int IList.Add(object value) => ((IList)collection).Add(value);
+
+        bool IList.Contains(object value) => ((IList)collection).Contains(value);
+
+        int IList.IndexOf(object value) => ((IList)collection).IndexOf(value);
+
+        void IList.Insert(int index, object value) => ((IList)collection).Insert(index, value);
+
+        void IList.Remove(object value) => ((IList)collection).Remove(value);
+        #endregion
     }
 }

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace System.Collections.Observable
 {
-    class ConcatObservableCollection<T> : IReadOnlyObservableCollection<T>
+    class ConcatObservableCollection<T> : IReadOnlyObservableCollection<T>, IList
     {
         IReadOnlyList<T>[] collections;
 
@@ -108,5 +108,94 @@ namespace System.Collections.Observable
         }
 
         IEnumerator IEnumerable.GetEnumerator() => collections.SelectMany(v => v).GetEnumerator();
+
+
+
+        #region ICollection
+        bool ICollection.IsSynchronized => false;
+
+        object ICollection.SyncRoot { get; } = new object();
+
+        void ICollection.CopyTo(Array array, int index)
+        {
+            foreach (var collection in collections)
+            {
+                foreach (var item in collection)
+                {
+                    array.SetValue(item, index++);
+                }
+            }
+        }
+        #endregion
+
+        #region IList
+        bool IList.IsFixedSize => false;
+
+        bool IList.IsReadOnly => true;
+
+        object IList.this[int index] { get => this[index]; set => throw new NotSupportedException(); }
+
+        int IList.Add(object value) => throw new NotSupportedException();
+
+        void IList.Clear() => throw new NotSupportedException();
+
+        bool IList.Contains(object value)
+        {
+            if (typeof(T).IsValueType)
+            {
+                if (value is null)
+                {
+                    return false;
+                }
+                else
+                {
+                    return Contains((T)value);
+                }
+            }
+            else
+            {
+                if (value is null || value is T)
+                {
+                    return Contains((T)value);
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
+        int IList.IndexOf(object value)
+        {
+            if (typeof(T).IsValueType)
+            {
+                if (value is null)
+                {
+                    return -1;
+                }
+                else
+                {
+                    return IndexOf((T)value);
+                }
+            }
+            else
+            {
+                if (value is null || value is T)
+                {
+                    return IndexOf((T)value);
+                }
+                else
+                {
+                    return -1;
+                }
+            }
+        }
+
+        void IList.Insert(int index, object value) => throw new NotSupportedException();
+
+        void IList.Remove(object value) => throw new NotSupportedException();
+
+        void IList.RemoveAt(int index) => throw new NotSupportedException();
+        #endregion
     }
 }
